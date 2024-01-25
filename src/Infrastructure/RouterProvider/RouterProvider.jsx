@@ -35,7 +35,7 @@ export default function ({ config }) {
     return (
         <LoadingScreen loading={mainContext.loading}>
             <BrowserRouter basename={config.basename}>
-                {/* <NotificationDropdown mainState={mainContext} setMainState={setMainContext}> */}
+                <NotificationDropdown mainState={mainContext} setMainState={setMainContext}>
                     <Routes>
                         <Route path="/*" element={<Navigate to="/app/dashboard" />} />
 
@@ -44,7 +44,7 @@ export default function ({ config }) {
                         <Route path='/public/*' element={<PublicRoutes />} />
 
                     </Routes>
-                {/* </NotificationDropdown> */}
+                </NotificationDropdown>
             </BrowserRouter>
         </LoadingScreen>)
 }
