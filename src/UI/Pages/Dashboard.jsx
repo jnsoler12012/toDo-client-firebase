@@ -19,8 +19,8 @@ export default function () {
         console.log("\\\\\\\\\\\\\\\\\\\\\\\\\\ CAMBIO PRINCIPAL PRODUCT");
 
 
-        if ((mainContext?.services?.axios && tasks.length <= 0) || mainContext?.reload) {
-            console.log("@@DASHBOARD@@@@@@@@@@@@ ", mainContext);
+        if (mainContext?.services?.axios && (tasks.length <= 0 || mainContext?.reload)) {
+            console.log("@@DASHBOARD@@@@@@@@@@@@ PETICION PORQUE SI", mainContext);
             (async () => {
                 await getAllTaskByUser({
                     data: {
@@ -38,16 +38,16 @@ export default function () {
                                 setTasks(data?.data?.data)
                             }
                             else
-                                setTasks([])
+                                setTasks(['none'])
                 })
             })()
         }
 
         return () => {
             console.log("\\RETURN\\\\\\\\\\\\\\\\\\\\\\\\ CAMBIO PRINCIPAL PRODUCT");
-            
+
         }
-    }, [mainContext?.product, mainContext?.reload])
+    }, [mainContext?.filter, mainContext?.reload])
 
     const handleSelectionFilterState = (e, name) => {
         e.preventDefault()
@@ -152,7 +152,13 @@ export default function () {
                 </div>
 
                 {
-                    tasks.map(task => <TaskCard attrs={task} key={task.id} editTask={handleEditTask} deleteTask={handleDeleteTask} />)
+                    tasks[0] !== 'none'
+                    ? tasks.map(task => <TaskCard attrs={task} key={task.id} editTask={handleEditTask} deleteTask={handleDeleteTask} />)
+                    : (
+                        <div>
+                            There are no tasks
+                        </div>
+                    )
                 }
                 <div style={{ "height": "50px", "width": "70vw", "border": "1px solid #ccc", "borderRadius": "16px", "display": "flex", "margin": "8px", "boxSizing": "border-box", "alignItems": "center", "justifyContent": "center" }} className='hover:bg-[#eee] hover:cursor-pointer'
                     onClick={(e) => setCreationEditionTask(true)}
