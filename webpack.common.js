@@ -24,8 +24,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'index.html',
             template: path.resolve(__dirname, 'src/index.template.ejs'),
-            //favicon: path.resolve(__dirname, 'src/UI/assets/ico/dashboard.ico'),
-            title: 'ToDo List',
+            favicon: path.resolve(__dirname, 'src/document-icon.ico'),
+            title: 'TaskMaster',
             inject: true,
         }),
         new Dotenv({

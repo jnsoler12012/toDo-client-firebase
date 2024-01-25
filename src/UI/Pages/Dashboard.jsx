@@ -117,7 +117,7 @@ export default function () {
     return (
         <>
             <div style={{ "height": "100vh", "width": "100%", "display": "flex", "flexDirection": "column", "alignItems": "center", "justifyContent": "start", "overflowY": "auto" }}>
-                <h1 style={{ "fontSize": "40px", "fontWeight": "400", "color": "#555", "margin": "16px" }}>Your tasks</h1>
+                <h1 style={{ "fontSize": "40px", "fontWeight": "400", "color": "#555", "margin": "16px" }}>From TaskMaster, these are your current tasks, feel free to filter them</h1>
 
 
                 <div role='filters_state' style={{ "width": "80%", "height": "auto", "display": "flex", "justifyContent": "flex-end", "marginRight": '2rem' }}>
@@ -153,12 +153,12 @@ export default function () {
 
                 {
                     tasks[0] !== 'none'
-                    ? tasks.map(task => <TaskCard attrs={task} key={task.id} editTask={handleEditTask} deleteTask={handleDeleteTask} />)
-                    : (
-                        <div>
-                            There are no tasks
-                        </div>
-                    )
+                        ? tasks.map(task => <TaskCard attrs={task} key={task.id} editTask={handleEditTask} deleteTask={handleDeleteTask} />)
+                        : (
+                            <div>
+                                There are no tasks
+                            </div>
+                        )
                 }
                 <div style={{ "height": "50px", "width": "70vw", "border": "1px solid #ccc", "borderRadius": "16px", "display": "flex", "margin": "8px", "boxSizing": "border-box", "alignItems": "center", "justifyContent": "center" }} className='hover:bg-[#eee] hover:cursor-pointer'
                     onClick={(e) => setCreationEditionTask(true)}

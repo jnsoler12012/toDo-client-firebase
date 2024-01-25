@@ -178,7 +178,7 @@ export default function () {
             <div style={{ "width": "50vw", "height": "100vh", "display": "flex", "flexDirection": "column", "justifyContent": "center", "alignItems": "left", "paddingLeft": "12.5vw", "boxSizing": "border-box" }}>
                 <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
 
-                    <h1 role='main_title' style={{ "color": "#333", "fontFamily": "Roboto, Arial", "fontSize": "40px", "margin": "12px", "marginLeft": "0" }}>Welcome to Tasker</h1>
+                    <h1 role='main_title' style={{ "color": "#333", "fontFamily": "Roboto, Arial", "fontSize": "40px", "margin": "12px", "marginLeft": "0" }}>Welcome to TaskMaster</h1>
 
                     {
                         forgotPassword
