@@ -8,11 +8,12 @@ const BASENAME_AXIOS = process.env.BASENAME_AXIOS
 
 export const MainContext = createContext(null)
 
-console.log(process.env);
+
 
 export const MainApp = () => {
   console.log("ENTRAMOS", window.localStorage.getItem("TOKENtodo")
   )
+  console.log(process.env);
   // window.localStorage.removeItem("TOKENtodo")
   // window.localStorage.removeItem("userToDo")
 
