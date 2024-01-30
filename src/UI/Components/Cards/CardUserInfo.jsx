@@ -18,7 +18,7 @@ export default function ({ user, context }) {
         resolver: yupResolver(userModificationValidation())
     });
 
-    const [showEditOptions, setShowEditOptions] = useState(true)
+    const [showEditOptions, setShowEditOptions] = useState(false)
 
     const handleShowEdition = (state) => {
         reset()

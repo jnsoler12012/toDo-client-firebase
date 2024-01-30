@@ -54,7 +54,7 @@ export default function ({ close, user, context }) {
 
     return (
         <div className='absolute top-0 left-0 flex w-[100vw] h-[100vh] bg-[#94949451] justify-center items-center'>
-            <div className='bg-[white] w-[40%] h-[auto] p-5 rounded-2xl'>
+            <div className='bg-[white] w-[85%] lg:w-[40%] h-[auto] p-5 rounded-2xl'>
                 <form id={`form-create`} onSubmit={handleSubmit(handleSubmitForm)} >
                     <div className='flex items-center justify-between'>
                         <h1 className='text-[1.5rem] font-[600]'>Create new Category</h1>

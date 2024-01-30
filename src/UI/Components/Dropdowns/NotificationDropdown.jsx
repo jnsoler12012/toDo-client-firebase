@@ -41,7 +41,7 @@ export default function NotificationDropdown({ mainState, setMainState, children
                 timerContextChange(800)
             }
 
-        }, 5000);
+        }, 50000);
 
 
         return () => {
@@ -87,7 +87,7 @@ export default function NotificationDropdown({ mainState, setMainState, children
             break;
     }
 
-    notificationComponentBase = <div role="alert" className={`absolute transform w-[92%] z-50 ${visibleAlert ? 'animate-slideIn block top-[1.5%]' : 'animate-slideOut top-[-3%]'} md:w-[58%] md:left-[20%] w-[91%] mx-[1rem] z-[52]`}>
+    notificationComponentBase = <div role="alert" className={`fixed transform w-[92%] z-50 ${visibleAlert ? 'animate-slideIn block top-[1.5%]' : 'animate-slideOut top-[-3%]'} md:w-[58%] md:left-[20%] w-[91%] mx-[1rem] z-[52]`}>
 
         <div className={`${messageValues.classNames?.containerDiv} border px-4 py-3 rounded relative flex items-center`} role="alert">
             <div className='md:w-[3%] w-[5.3%] mr-[0.3rem]'>
@@ -107,12 +107,3 @@ export default function NotificationDropdown({ mainState, setMainState, children
 
     )
 }
-
-
-
-
-
-{/* <div className={`absolute transform w-full z-50 ${mostrarAlerta ? 'animate-slideIn block top-[1.5%]' : 'animate-slideOut top-[-3%]'} bg-red-500 text-white p-4 rounded shadow-md md:w-[47%] md:left-[23%] w-[91%] mx-[1rem]`}>
-                <span className="float-right cursor-pointer" onClick={toggleAlerta}>&times;</span>
-                <p>¡Esta es una alerta!</p>
-            </div> */}
