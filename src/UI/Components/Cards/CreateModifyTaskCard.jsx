@@ -6,7 +6,7 @@ import ReactDatePicker from 'react-datepicker';
 import { HiXMark } from "Web_React_Icons/hi2";
 import { postCreateTask, postUpdateTask } from '../../../Application/Axios/post';
 
-export default function({ editingTask, close, availableTypes, user, context }) {
+export default function ({ editingTask, close, availableTypes, user, context }) {
 
     const [mainContext, setMainContext] = context
     const currentEditingTask = editingTask
@@ -106,8 +106,8 @@ export default function({ editingTask, close, availableTypes, user, context }) {
                         } task</h1>
                         <HiXMark className='h-[30px] w-[30px] cursor-pointer' onClick={(e) => { close(false) }} />
                     </div>
-                    <div id='options_task' className='flex w-[100%] flex-row'>
-                        <div className='w-1/2'>
+                    <div id='options_task' className='flex w-[100%] flex-col lg:flex-row'>
+                        <div className='w-[100%] lg:w-1/2'>
                             <div className="w-full px-3 mb-6 md:mb-0 my-[1rem]">
                                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" forhtml={'name'}>
                                     Name
@@ -182,7 +182,7 @@ export default function({ editingTask, close, availableTypes, user, context }) {
 
                             </div>
                         </div>
-                        <div className='w-1/2'>
+                        <div className='w-[100%] lg:w-1/2'>
                             <div className="w-full px-3 mb-6 md:mb-0 my-[1rem] flex flex-col content-center items-center justify-center">
                                 <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" forhtml={'state'}>
                                     State
@@ -238,14 +238,18 @@ export default function({ editingTask, close, availableTypes, user, context }) {
                                     Expire Date Task
                                 </label>
 
-                                <ReactDatePicker
-                                    selected={expireDateProp}
-                                    showIcon
-                                    minDate={todayDate}
-                                    onChange={(date) => setExpireDateProp(date)}
-                                    icon="fa fa-calendar"
+                                <div className="customDatePickerWidth">
+                                    <ReactDatePicker
 
-                                />
+                                        selected={expireDateProp}
+                                        showIcon
+                                        minDate={todayDate}
+                                        onChange={(date) => setExpireDateProp(date)}
+                                        icon="fa fa-calendar"
+
+                                    />
+                                </div>
+
                                 {
                                     errors?.[`${'expireDate'}`]?.type &&
                                     <p key={`${'expireDate'}`} className="text-red-500 text-[0.85rem] italic overflow-wrap text-ellipsis overflow-hidden text-justify">

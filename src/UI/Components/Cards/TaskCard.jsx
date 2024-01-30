@@ -8,8 +8,8 @@ export default function ({ attrs, editTask, deleteTask }) {
 
 
     return (
-        <div style={{ "height": "80px", "width": "90%", "background": "white", "borderRadius": "16px", "boxShadow": "0 3px 3px #ccc", "margin": "8px", "boxSizing": "border-box" }}>
-            <div style={{ "height": "80px", "width": "100%", "boxSizing": "border-box" }} className='flex items-center px-4 py-2 justify-between'>
+        <div style={{ "height": "auto", "width": "90%", "background": "white", "borderRadius": "16px", "boxShadow": "0 3px 3px #ccc", "margin": "8px", "boxSizing": "border-box" }}>
+            <div role='task-props' style={{ "height": "auto", "width": "100%", "boxSizing": "border-box" }} className='flex flex-col lg:flex-row lg:items-center px-4 py-2 justify-between items-center'>
 
                 <div className='flex justify-center items-center'>
                     <div title={`state of task ${state}`} className={`${state == 'OnProgress' ? 'bg-yellow-600' : (state == 'Pending') ? 'bg-red-600' : 'bg-green-600'} rounded-full h-[30px] w-[30px] mx-5`}>

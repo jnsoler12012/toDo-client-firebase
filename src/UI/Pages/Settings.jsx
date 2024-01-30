@@ -15,12 +15,12 @@ export default function () {
     }, [])
 
     return (
-        <div style={{ "height": "100vh", "width": "auto", "overflowY": "auto" }} className='flex py-16 px-3'>
+        <div className='flex  flex-col-reverse justify-end lg:flex-row h-[auto] w-[100%]  py-16 px-3 overflow-y-auto'>
             <div className="w-full lg:w-8/12 px-4">
                 <CardUserInfo user={info} context={[mainContext, setMainContext]} />
             </div>
-            <div className="w-full lg:w-4/12 px-4">
-                <CardProfile user={info}/>
+            <div className="w-full lg:w-4/12 px-4 mt-7 lg:mt-5">
+                <CardProfile user={info} />
             </div>
         </div>
     )

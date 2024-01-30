@@ -33,5 +33,5 @@ export default function (setMainContext, type) {
     }
     setTimeout(() => {
         location.reload();
-    }, 2000);
+    }, 1200);
 }

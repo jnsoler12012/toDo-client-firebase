@@ -171,11 +171,11 @@ export default function () {
 
 
     return (
-        <div style={{ "width": "100vw", "height": "100vh", "display": "flex", "flex": "row" }}>
-            <div style={{ "width": "50vw", "height": "100vh", "backgroundColor": "#eee", "display": "flex", "alignItems": "center", "justifyContent": "center" }}>
+        <div role='container-login' className='flex flex-col-reverse lg:flex-row' style={{ "width": "100vw", "height": "100vh" }}>
+            <div  style={{ "width": "100%", "height": "100vh", "backgroundColor": "#eee", "display": "flex", "alignItems": "center", "justifyContent": "center" }}>
                 <img src={logo} alt="" style={{ "width": "30vw" }} />
             </div>
-            <div style={{ "width": "50vw", "height": "100vh", "display": "flex", "flexDirection": "column", "justifyContent": "center", "alignItems": "left", "paddingLeft": "12.5vw", "boxSizing": "border-box" }}>
+            <div className='px-[4rem] lg:px-[6rem]' style={{ "width": "100%", "height": "100vh", "display": "flex", "flexDirection": "column", "justifyContent": "center", "alignItems": "left", "boxSizing": "border-box" }}>
                 <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
 
                     <h1 role='main_title' style={{ "color": "#333", "fontFamily": "Roboto, Arial", "fontSize": "40px", "margin": "12px", "marginLeft": "0" }}>Welcome to TaskMaster</h1>
@@ -199,7 +199,7 @@ export default function () {
                                                         ref={newPasswordRef}
                                                         value={newPassword || ''}
                                                         id='new-password'
-                                                        style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "boxSizing": "border-box" }}
+                                                        style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "boxSizing": "border-box" }}
                                                         className='text-[#777] valid:text-green-700 invalid:text-red-700'
                                                         pattern="^.{4,20}$"
                                                         onChange={(e) => { e.preventDefault(); setNewPassword(e.target.value) }}
@@ -218,7 +218,7 @@ export default function () {
                                                         <input id="otp" placeholder="Insert your 4 digits OTP" type='text'
                                                             pattern="\d{4}"
 
-                                                            style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "boxSizing": "border-box" }}
+                                                            style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "boxSizing": "border-box" }}
                                                             onChange={(e) => setOTPuser(e.target.value)}
                                                             className='text-[#777] valid:text-green-700 invalid:text-red-700'
                                                         />
@@ -234,7 +234,7 @@ export default function () {
                                                         Email
                                                     </h2>
                                                     <input id="email" placeholder="Insert your email"
-                                                        style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
+                                                        style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
                                                         {...register('email')}
                                                     />
                                                     {
@@ -253,7 +253,7 @@ export default function () {
                                         Password
                                     </h2>
                                     <input placeholder="Insert your password" type="password"
-                                        style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
+                                        style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
                                         {...register('password', {
                                             value: 'noneP'
                                         })}
@@ -269,7 +269,7 @@ export default function () {
                                 {
                                     resetPasswordState
                                         ? (
-                                            <button id='submit-new-password' style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}
+                                            <button id='submit-new-password' style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}
                                                 onClick={(e) => { onSubmit({ email: emailResetPassword, password: newPassword }, e); }}
                                             >
                                                 Reset Password
@@ -277,14 +277,14 @@ export default function () {
                                         )
                                         : OTP !== null
                                             ? (
-                                                <button style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}
+                                                <button style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}
                                                     onClick={(e) => validateOTP(e)}
                                                 >
                                                     Validate OTP
                                                 </button>
                                             )
                                             : (
-                                                <button role="submit" type='submit' id='submit-forgot' style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}>
+                                                <button role="submit" type='submit' id='submit-forgot' style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}>
                                                     Send OTP code
                                                 </button>
                                             )
@@ -301,7 +301,7 @@ export default function () {
                                             Email
                                         </h2>
                                         <input role='email_user' id="email" placeholder="Insert your email"
-                                            style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
+                                            style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
                                             {...register('email')}
                                         />
                                         {
@@ -317,7 +317,7 @@ export default function () {
                                             Password
                                         </h2>
                                         <input role='password_user' placeholder="Insert your password" type="password"
-                                            style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
+                                            style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
                                             {...register('password')}
                                         />
                                         {
@@ -328,8 +328,8 @@ export default function () {
                                         }
                                     </div>
 
-                                    <button role="submit" type='submit' id='submit-login' style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}>
-                                        Sign In
+                                    <button role="submit" type='submit' id='submit-login' style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}>
+                                        Log In
                                     </button>
                                 </>
                             )

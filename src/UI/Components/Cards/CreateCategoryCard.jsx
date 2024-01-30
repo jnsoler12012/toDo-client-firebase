@@ -60,7 +60,7 @@ export default function ({ close, user, context }) {
                         <h1 className='text-[1.5rem] font-[600]'>Create new Category</h1>
                         <HiXMark className='h-[30px] w-[30px] cursor-pointer' onClick={(e) => { close(false) }} />
                     </div>
-                    <div id='options_task' className='flex w-[100%] flex-row'>
+                    <div id='options_task_category' className='flex w-[100%]  flex-col lg:flex-row'>
 
                         <div className="w-full px-3 mb-6 md:mb-0 my-[1rem]">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" forhtml={'name'}>
@@ -96,7 +96,7 @@ export default function ({ close, user, context }) {
                                         setValue('color', "#" + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0'))
                                     }}
                                     {...register('color')} >
-                                    Random Color
+                                    generate
                                 </button>
                                 <div className={` w-[4rem] h-[2.5rem] rounded-lg`} style={{ backgroundColor: watch('color'), border: !watch('color') && 'black 1px solid' }}>
                                 </div>

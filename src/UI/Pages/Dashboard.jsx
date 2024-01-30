@@ -115,12 +115,12 @@ export default function () {
     }
 
     return (
-        <>
+        <div className='w-[100%] '>
             <div style={{ "height": "100vh", "width": "100%", "display": "flex", "flexDirection": "column", "alignItems": "center", "justifyContent": "start", "overflowY": "auto" }}>
-                <h1 style={{ "fontSize": "40px", "fontWeight": "400", "color": "#555", "margin": "16px" }}>From TaskMaster, these are your current tasks, feel free to filter them</h1>
+                <h1 style={{ "fontSize": "40px", "fontWeight": "400", "color": "#555", "margin": "16px" }}>Current Tasks</h1>
 
 
-                <div role='filters_state' style={{ "width": "80%", "height": "auto", "display": "flex", "justifyContent": "flex-end", "marginRight": '2rem' }}>
+                <div role='filters_state' style={{ "width": "100%", "height": "auto", "display": "flex", "justifyContent": "flex-end" }} className='pr-[0rem] lg:md-[2rem] lg:pr-[3rem]'>
                     <div onClick={(e) => handleSelectionFilterState(e, 'All')}>
                         <div style={{ "width": "auto", "height": "24px", "borderRadius": "8px", "border": "1px solid #ccc", "display": "flex", "alignItems": "center", "justifyContent": "center", "margin": "0 2px", "padding": '12px' }} className={`hover:cursor-pointer hover:bg-[#eee] ${state == 'All' && 'bg-[#afafaf]'}`}>
                             <h3 style={{ "fontSize": "16px", }} className={` ${state == 'All' ? ' text-[black]' : ' text-[#ccc]'}`}>
@@ -170,6 +170,6 @@ export default function () {
             {
                 creationEditionTask && <CreateModifyTaskCard editingTask={currentTaskEdition} close={handleCloseEditCreateTask} availableTypes={filterOptions} user={mainContext?.user?.info} context={[mainContext, setMainContext]} />
             }
-        </>
+        </div>
     )
 }

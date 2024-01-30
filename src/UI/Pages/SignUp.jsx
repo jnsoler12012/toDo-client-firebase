@@ -6,15 +6,14 @@ import { loginValidation, userModificationValidation } from '../utils/validation
 import { yupResolver } from '@hookform/resolvers/yup';
 import { postCreateUser } from '../../Application/Axios/post';
 import { MainContext } from '../../Infrastructure';
-import { parseJwt } from '../../Infrastructure/utils';
+import { CardSelectProfileImage } from '../Components/Cards';
 
 export default function () {
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, watch, setValue, getValues, formState: { errors } } = useForm({
         resolver: yupResolver(userModificationValidation())
     });
     const [mainContext, setMainContext] = useContext(MainContext)
-
 
     const onSubmit = async (dataForm, e) => {
         console.log(dataForm);
@@ -43,9 +42,9 @@ export default function () {
 
 
     return (
-        <div style={{ "width": "100vw", "height": "100vh", "display": "flex", "flex": "row" }}>
+        <div role='container-sign-up' className='flex flex-col lg:flex-row' style={{ "width": "100vw", "height": "100vh" }}>
 
-            <div style={{ "width": "50vw", "height": "100vh", "display": "flex", "flexDirection": "column", "justifyContent": "center", "alignItems": "left", "paddingLeft": "12.5vw", "boxSizing": "border-box" }}>
+            <div className='px-[4rem] lg:px-[6rem]' style={{ "width": "100%", "height": "100vh", "display": "flex", "flexDirection": "column", "justifyContent": "center", "alignItems": "left", "boxSizing": "border-box" }}>
                 <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
                     <h1 role='main_title' style={{ "color": "#333", "fontFamily": "Roboto, Arial", "fontSize": "40px", "margin": "12px", "marginLeft": "0" }}>Welcome to TaskMaster</h1>
                     <h2 style={{ "color": "#999", "fontFamily": "Roboto, Arial", "fontSize": "16px", "fontWeight": "300", "margin": "8px", "marginLeft": "0", "marginRight": "16px" }}>
@@ -57,7 +56,7 @@ export default function () {
                             Email
                         </h2>
                         <input role='email_user' id="email" placeholder="Insert your email"
-                            style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
+                            style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
                             {...register('email')}
                         />
                         {
@@ -73,7 +72,7 @@ export default function () {
                             Password
                         </h2>
                         <input role='password_user' placeholder="Insert your password" type="password"
-                            style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
+                            style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
                             {...register('password')}
                         />
                         {
@@ -89,7 +88,7 @@ export default function () {
                             Name
                         </h2>
                         <input role='name_user' placeholder="Insert your name" type="name"
-                            style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
+                            style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
                             {...register('name')}
                         />
                         {
@@ -100,27 +99,13 @@ export default function () {
                         }
                     </div>
 
-                    <div className='py-2'>
-                        <h2 style={{ "color": "#777", "fontFamily": "Roboto, Arial", "fontSize": "16px", "fontWeight": "", "margin": "8px", "marginLeft": "0" }}>
-                            ImageRef
-                        </h2>
-                        <input role='imageRef_user' placeholder="Insert your imageRef" type="imageRef"
-                            style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "border": "1px solid #999", "paddingLeft": "8px", "fontSize": "16px", "color": "#777", "boxSizing": "border-box" }}
-                            {...register('imageRef')}
-                        />
-                        {
-                            errors?.['imageRef']?.type &&
-                            <p role="alert" key={'imageRef'} className="text-red-500 text-base italic">
-                                {errors?.['imageRef']?.message}
-                            </p>
-                        }
-                    </div>
+                    <CardSelectProfileImage formController={{ register, watch, setValue, getValues, errors }} />
 
 
                     <div style={{ "display": "flex", "justifyContent": "left", "alignItems": "center", "marginTop": "16px" }}>
                     </div>
 
-                    <button role="submit" type='submit' style={{ "width": "25vw", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}>
+                    <button role="submit" type='submit' style={{ "width": "100%", "height": "40px", "borderRadius": "8px", "background": "#7f56da", "color": "white", "fontSize": "16px", "border": "0px", "fontWeight": "400" }}>
                         Register
                     </button>
 
@@ -129,7 +114,7 @@ export default function () {
                     </h2>
                 </form>
             </div>
-            <div style={{ "width": "50vw", "height": "100vh", "backgroundColor": "#eee", "display": "flex", "alignItems": "center", "justifyContent": "center" }}>
+            <div style={{ "width": "100%", "height": "100vh", "backgroundColor": "#eee", "display": "flex", "alignItems": "center", "justifyContent": "center" }}>
                 <img src={logo} alt="" style={{ "width": "30vw" }} />
             </div>
         </div>

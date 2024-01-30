@@ -8,16 +8,17 @@ import { postUpdateSystemUser, postUpdateUser } from '../../../Application/Axios
 import { MainContext } from '../../../Infrastructure';
 import { CustomCreateInput } from '../Forms';
 import { logOut } from '../../../Infrastructure/utils';
+import CardSelectProfileImage from './CardSelectProfileImage';
 
 export default function ({ user, context }) {
     const { createdAt, imageRef, email, id, name, role, state } = user
     const [mainContext, setMainContext] = context
 
-    const { register, handleSubmit, reset, getValues, formState: { errors } } = useForm({
+    const { register, handleSubmit, watch, reset, setValue, getValues, formState: { errors } } = useForm({
         resolver: yupResolver(userModificationValidation())
     });
 
-    const [showEditOptions, setShowEditOptions] = useState(false)
+    const [showEditOptions, setShowEditOptions] = useState(true)
 
     const handleShowEdition = (state) => {
         reset()
@@ -53,8 +54,8 @@ export default function ({ user, context }) {
             async () => await postUpdateUser({
                 data: userEdited,
                 id: {
-                    idRequester: id,
-                    idRequired: id
+                    idRequester: parseInt(id),
+                    idRequired:  parseInt(id)
                 },
                 context: { mainContext, setMainContext }
             }).then(data => {
@@ -110,18 +111,22 @@ export default function ({ user, context }) {
                             User Information
                         </h6>
                         <div className="flex flex-wrap">
+
+
                             <CustomCreateInput id={`email`} errors={errors} register={register} text={'Email address'} defaultValue={email} />
                             <CustomCreateInput id={`password`} errors={errors} register={register} text={'Change Password'} defaultValue={'*********'} />
                             <CustomCreateInput id={`name`} errors={errors} register={register} text={'Change Name'} defaultValue={name} />
-                            <CustomCreateInput id={`imageRef`} errors={errors} register={register} text={'Change imageref'} defaultValue={imageRef} />
-                            <div className='flex justify-center items-center m-[1rem] w-full'>
-                                <button className={`bg-emerald-600 active:bg-emerald-700 hover:text-white hover:bg-opacity-90 group text-[13px] md:text-sm lg:text-15px leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-body font-semibold text-center justify-center tracking-[0.2px] rounded placeholder-white focus-visible:outline-none focus:outline-none h-10 md:h-11 bg-brand px-5 md:px-6 lg:px-8 py-4 md:py-3.5 lg:py-4 w-full text-white`}
-                                    type='submit'
-                                >
-                                    <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" className="w-6 h-6 text-[#ffffff] mr-3" xmlns="http://www.w3.org/2000/svg"><path d="M380.44 32H64a32 32 0 0 0-32 32v384a32 32 0 0 0 32 32h384a32.09 32.09 0 0 0 32-32V131.56zM112 176v-64h192v64zm223.91 179.76a80 80 0 1 1-83.66-83.67 80.21 80.21 0 0 1 83.66 83.67z"></path></svg>
-                                    Update User
-                                </button>
-                            </div>
+                        </div>
+
+                        <CardSelectProfileImage formController={{ register, watch, setValue, getValues, errors }} userRef={imageRef}/>
+
+                        <div className='flex justify-center items-center w-full'>
+                            <button className={`bg-emerald-600 active:bg-emerald-700 hover:text-white hover:bg-opacity-90 group text-[13px] md:text-sm lg:text-15px leading-4 inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-body font-semibold text-center justify-center tracking-[0.2px] rounded placeholder-white focus-visible:outline-none focus:outline-none h-10 md:h-11 w-full text-white`}
+                                type='submit'
+                            >
+                                <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" className="w-6 h-6 text-[#ffffff] mr-3" xmlns="http://www.w3.org/2000/svg"><path d="M380.44 32H64a32 32 0 0 0-32 32v384a32 32 0 0 0 32 32h384a32.09 32.09 0 0 0 32-32V131.56zM112 176v-64h192v64zm223.91 179.76a80 80 0 1 1-83.66-83.67 80.21 80.21 0 0 1 83.66 83.67z"></path></svg>
+                                Update User
+                            </button>
                         </div>
 
                     </form>

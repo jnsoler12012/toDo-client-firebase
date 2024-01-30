@@ -17,7 +17,7 @@ export default () => {
         <>
             <div className="flex w-[100vw]  h-[100vh] bg-[#f5f5f5]">
                 <Sidebar />
-                <div className="w-[inherit]">
+                <div className="w-[75%] lg:w-[78%]">
                     <Routes>
                         <Route element={<PrivateRouter />}>
                             <Route path="/*" element={<div>No esta la ruta</div>} />
