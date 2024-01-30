@@ -41,7 +41,7 @@ export default function NotificationDropdown({ mainState, setMainState, children
                 timerContextChange(800)
             }
 
-        }, 50000);
+        }, 5000);
 
 
         return () => {
