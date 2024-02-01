@@ -16,4 +16,4 @@ npm run start
 
 Para la parte de el client, se abrirá una conexión en http://localhost:3000/
 
-And open on your prefferred browser
+And open on your prefferred browser for testing purposes
